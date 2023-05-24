@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Notes.Mobile.MainPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="17*"/>
+            <RowDefinition Height="17*"/>
+            <RowDefinition Height="17*"/>
+            <RowDefinition Height="17*"/>
+            <RowDefinition Height="17*"/>
+            <RowDefinition Height="17*"/>
+        </Grid.RowDefinitions>
+        <Label Text="Войти" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="30"></Label>
+        <Label Grid.Row="1" Text="Login" HorizontalTextAlignment="Center" VerticalTextAlignment="End" FontSize="30" ></Label>
+        <Entry Grid.Row="2" x:Name="TextBoxLogin"></Entry>
+        <Label Grid.Row="3" Text="Password" HorizontalTextAlignment="Center" VerticalTextAlignment="End" FontSize="30" ></Label>
+        <Entry Grid.Row="4" x:Name="TextBoxPassword"></Entry>
+        <Button Grid.Row="5" Text="Sign in" FontSize="20" Background="#00b473" TextColor="White" Clicked="Button_OnClicked"></Button>
+    </Grid>
+</ContentPage>

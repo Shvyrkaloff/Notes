@@ -1,0 +1,122 @@
+﻿@if (_catalogTasks!.Count != 0)
+{
+    <Switch OnClick="AskedSwitchCheckedChanged" Checked="@AskedSwitch" CheckedChildren="I ASKED" UnCheckedChildren="I WAS ASKED" />
+    <Divider/>
+    <AntList Grid="_grid" DataSource="@_catalogTasks">
+        <ListItem>
+            <Card Bordered Title="@($"{context.Id.ToString()} {@context.Priority?.Name} {context.TaskAuthor?.Name}")">
+            <Extra>
+                <Popover Title="Read task">
+                    <Icon Type="up-circle" Theme="fill" @onclick="async (_) => await Open(context)" />
+                </Popover>
+                <Popover Title="Edit task">
+                    <Icon Type="edit" Theme="fill" OnClick="async () => await EditTaskEnabled(context)" />
+                </Popover>
+                <Popover Title="Delete task">
+                    <Icon Type="delete" Theme="fill" OnClick="async() => DeleteTask(context)" />
+                </Popover>
+            </Extra>
+            <Body>
+                <div>
+                    <Descriptions Bordered>
+                        <Paragraph Copyable>
+                            @context.Name
+                        </Paragraph>
+                    </Descriptions>
+                    <Paragraph>
+                        <Popover Title="@context.Priority?.Name">
+                            <Icon Type="fire" Theme="fill" />
+                        </Popover>
+                        <Popover Title="@context.TaskAuthor?.Name">
+                            <Avatar Size="small">U</Avatar>
+                        </Popover>
+                    </Paragraph>
+                </div>
+            </Body>
+            </Card>
+        </ListItem>
+    </AntList>
+}
+else
+{
+    <Spin />
+}
+
+@if (EditedTask != null)
+{
+    <Modal Title="EDIT TASK"
+       Visible="@_visibleModal"
+       OnOk="@EditTask"
+       OnCancel="@HandleCancel">
+        <Form Model="@EditedTask"
+          OnFinish="OnFinish"
+          OnFinishFailed="OnFinishFailed"
+          LabelColSpan="8"
+          WrapperColSpan="16">
+            <FormItem>
+                <Input Type="hidden" @bind-Value="@context.Id" />
+            </FormItem>
+            <FormItem Label="Name">
+                <Input Type="text" @bind-Value="@context.Name" />
+            </FormItem>
+            <FormItem Label="Description">
+                <TextArea @bind-Value="@context.Description"></TextArea>
+            </FormItem>
+            <FormItem Label="Task author">
+                <Select Mode="default"
+                    DataSource="@AuthorsList"
+                    @bind-Value="@context.TaskAuthorId"
+                    LabelName="@nameof(Author.Name)"
+                    ValueName="@nameof(Author.Id)">
+                </Select>
+            </FormItem>
+            <FormItem Label="Task executor">
+                <Select Mode="default"
+                    DataSource="@AuthorsList"
+                    @bind-Value="@context.TaskExecutorId"
+                    LabelName="@nameof(Author.Name)"
+                    ValueName="@nameof(Author.Id)">
+                </Select>
+            </FormItem>
+            <FormItem Label="Priority">
+                <Select Mode="default"
+                    DataSource="@PriorityList"
+                    @bind-Value="@context.PriorityId"
+                    LabelName="@nameof(Priority.Name)"
+                    ValueName="@nameof(Priority.Id)">
+                </Select>
+            </FormItem>
+            <FormItem Label="Information system">
+                <Select Mode="default"
+                    DataSource="@InformationSystemList"
+                    @bind-Value="@context.InformationSystemId"
+                    LabelName="@nameof(Priority.Name)"
+                    ValueName="@nameof(Priority.Id)">
+                </Select>
+            </FormItem>
+            <FormItem Label="Task status">
+                <Select Mode="default"
+                    DataSource="@TaskStatusList"
+                    @bind-Value="@context.TaskStatusId"
+                    LabelName="@nameof(Application.Entities.TaskStatus.Domain.TaskStatus.Name)"
+                    ValueName="@nameof(Application.Entities.TaskStatus.Domain.TaskStatus.Id)">
+                </Select>
+            </FormItem>
+        </Form>
+    </Modal>
+}
+
+@if (SelectedCatalogTask != null)
+{
+    <Drawer Visible="@_visibleDrawer" Placement="@_placement" Title="@SelectedCatalogTask!.Id.ToString()" OnClose="_ => Close()">
+        <p>@SelectedCatalogTask.Name</p>
+        <p>@SelectedCatalogTask.Description</p>
+        <p>@SelectedCatalogTask.InformationSystem?.Name</p>
+        <p>@SelectedCatalogTask.TaskExecutor?.Name</p>
+    </Drawer>
+}
+
+@code {
+    private RenderFragment _icon =
+            @<Icon Type = "exclamation-circle" Theme="outline"></Icon>;
+}

@@ -1,0 +1,19 @@
+<PageHeader BackIcon="true" Class="site-page-header">
+    <PageHeaderTitle>TASK BOOK</PageHeaderTitle>
+    <PageHeaderSubtitle>This is a task book</PageHeaderSubtitle>
+    <PageHeaderExtra>
+        <Paragraph>
+            @($"Hello, {UserAuthenticationName}!")
+        </Paragraph>
+        <Button Type="@ButtonType.Primary" OnClick="LoginHandler">LOGIN</Button>
+    </PageHeaderExtra>
+</PageHeader>
+
+@if (AuthenticationVisibility)
+{
+    <Authentication @bind-Visibility="AuthenticationVisibility" />
+}
+
+@code {
+
+}

@@ -1,0 +1,44 @@
+﻿<Window x:Class="Notes.Desktop.Windows.TaskAddWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Notes.Desktop.Windows"
+        mc:Ignorable="d"
+        Title="TaskAddWindow" Height="450" Width="600" Loaded="Window_Loaded">
+    <Grid Name="TaskAddGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Name="TextBlockHeader" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center">TASK CREATE WINDOW</TextBlock>
+        <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">Name</Label>
+        <TextBox Grid.Row="2" Grid.Column="1" Name="TextBoxName" Text="{Binding Name}"></TextBox>
+        <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">Description</Label>
+        <TextBox Grid.Row="3" Grid.Column="1" Name="TextBoxDescription" Text="{Binding Description}"></TextBox>
+        <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">Task author</Label>
+        <ComboBox Grid.Row="4" Grid.Column="1" Name="ComboBoxTaskAuthor" DisplayMemberPath="Name" SelectedItem="{Binding TaskAuthor}"></ComboBox>
+        <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">Task executor</Label>
+        <ComboBox Grid.Row="5" Grid.Column="1" Name="ComboBoxTaskExecutor" DisplayMemberPath="Name" SelectedItem="{Binding TaskExecutor}"></ComboBox>
+        <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">Information system</Label>
+        <ComboBox Grid.Row="6" Grid.Column="1" Name="ComboBoxInformationSystem" DisplayMemberPath="Name" SelectedItem="{Binding InformationSystem}"></ComboBox>
+        <Label Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">Priority</Label>
+        <ComboBox Grid.Row="7" Grid.Column="1" Name="ComboBoxPriority" DisplayMemberPath="Name" SelectedItem="{Binding Priority}"></ComboBox>
+        <Label Grid.Row="8" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">Task status</Label>
+        <ComboBox Grid.Row="8" Grid.Column="1" Name="ComboBoxTaskStatus" DisplayMemberPath="Name" SelectedItem="{Binding TaskStatus}"></ComboBox>
+        <Button Name="ButtonBack" Grid.Row="9" Grid.Column="0" Click="ButtonBack_OnClick">BACK</Button>
+        <Button Name="ButtonSave" Grid.Row="9" Grid.Column="1" Click="ButtonSave_OnClick">SAVE</Button>
+    </Grid>
+</Window>

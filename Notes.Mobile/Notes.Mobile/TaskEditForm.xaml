@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Notes.Mobile.TaskEditForm">
+    <ContentPage.Content>
+        <Grid x:Name="TaskEditGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="TextBlockHeader" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">EDIT WINDOW</Label>
+            <Label Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">Number</Label>
+            <Entry Grid.Row="1" Grid.Column="1" x:Name="TextBoxNumber" IsEnabled="False" Text="{Binding Id}"></Entry>
+            <Label Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">Name</Label>
+            <Entry Grid.Row="2" Grid.Column="1" x:Name="TextBoxName" Text="{Binding Name}"></Entry>
+            <Label Grid.Row="3" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">Description</Label>
+            <Entry Grid.Row="3" Grid.Column="1" x:Name="TextBoxDescription" Text="{Binding Description}"></Entry>
+            <Label Grid.Row="4" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">Task author</Label>
+            <Picker Grid.Row="4" Grid.Column="1" x:Name="ComboBoxTaskAuthor" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding TaskAuthor}"></Picker>
+            <Label Grid.Row="5" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">Task executor</Label>
+            <Picker Grid.Row="5" Grid.Column="1" x:Name="ComboBoxTaskExecutor" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding TaskExecutor}"></Picker>
+            <Label Grid.Row="6" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">Information system</Label>
+            <Picker Grid.Row="6" Grid.Column="1" x:Name="ComboBoxInformationSystem" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding InformationSystem}"></Picker>
+            <Label Grid.Row="7" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">Priority</Label>
+            <Picker Grid.Row="7" Grid.Column="1" x:Name="ComboBoxPriority" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding Priority}"></Picker>
+            <Label Grid.Row="8" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center">Task status</Label>
+            <Picker Grid.Row="8" Grid.Column="1" x:Name="ComboBoxTaskStatus" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding TaskStatus}"></Picker>
+            <Button x:Name="ButtonDelete" Grid.Row="9" Grid.Column="0" Clicked="ButtonDelete_OnClicked" Text="DELETE"></Button>
+            <Button x:Name="ButtonSave" Grid.Row="9" Grid.Column="1" Clicked="ButtonSave_OnClicked" Text="SAVE"></Button>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

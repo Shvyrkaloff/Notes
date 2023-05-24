@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Notes.Mobile.TaskList"
+             Appearing="TaskList_OnAppearing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Entry Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" x:Name="ActualUser"/>
+        <Button Grid.Row="0" Grid.Column="1" x:Name="ButtonExit" Clicked="ButtonExit_OnClicked" Text="EXIT"></Button>
+
+        <Picker Grid.Row="1" Grid.Column="0" x:Name="TaskBox" SelectedIndexChanged="TaskBox_OnSelectedIndexChanged" ItemDisplayBinding="{Binding Name}" />
+        <Button Grid.Row="1" Grid.Column="1" x:Name="ButtonAddTask" Clicked="ButtonAddTask_OnClicked" Text="ADD TASK"></Button>
+
+        <ListView Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0" x:Name="ListTasks" HorizontalScrollBarVisibility="Default" ItemTapped="ListTasks_OnItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell TextColor="DarkCyan" Text="{Binding FullName}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>
